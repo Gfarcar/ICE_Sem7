@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Grid } from '@mui/material';
-import GridEmpleados from '../../components/sample/gridEmpleados';
-import { StoreProvider } from '../../components/sample/storeContext';
+import GridEmpleados from '../../components/sample/HorasTrabajadas/gridHorasTrabajadas';
+import { HorasTrabajadasProvider } from '../../components/sample/HorasTrabajadas/horasTrabajadasContext';
 const BCrumb = [
   {
     to: '/',
@@ -14,7 +14,7 @@ const BCrumb = [
 
 const SamplePage = () => {
   return (
-    <StoreProvider>
+    <HorasTrabajadasProvider>
     
                     <Box>
                       <Grid container spacing={3}>
@@ -25,7 +25,7 @@ const SamplePage = () => {
                         </Grid>
                     </Box>
               
-    </StoreProvider>
+    </HorasTrabajadasProvider>
   );
 };
 

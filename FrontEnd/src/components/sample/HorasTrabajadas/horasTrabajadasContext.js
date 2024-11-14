@@ -13,14 +13,7 @@ export const HorasTrabajadasProvider = ({ children }) => {
 
     // Crear el store personalizado para horas trabajadas
     const horasTrabajadasStore = createCustomStore(
-        `${appsettings.apiUrl}${appsettings.horasTrabajadasTableUrl}`, 
-        (values) => ({
-            Names: values.names,
-            LastName: values.lastName,
-            SecondLastName: values.secondLastName,
-            Horas: values.horas,
-            Fecha: values.fecha
-        })
+        `${appsettings.apiUrl}`
     );
 
     return (

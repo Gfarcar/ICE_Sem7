@@ -15,7 +15,7 @@ function createCustomStore(baseUrl, insertMapping = null) {
   return new CustomStore({
     key: 'id',
     load: () => {
-      return axios.get('baseUrl')
+      return axios.get(baseUrl)
         .then(response => response.data)
         .catch(error => {
           console.error('Error fetching data:', error);

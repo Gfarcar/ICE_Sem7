@@ -1,5 +1,5 @@
 export const appsettings = {
-    apiUrl : 'http://localhost:5000',
+    apiUrl : 'http://localhost:5234/Lista',
     usersTableUrl : '/horastrabajadas/table',
     nominaTableUrl : '/nomina/table',
     nominaCharturl : '/nomina/chart',
