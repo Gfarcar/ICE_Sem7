@@ -23,6 +23,14 @@ const Menuitems = [
     href: '/sample-page',
     chip: 'New',
     chipColor: 'secondary',
+  },
+  {
+    id: 15117,
+    title: 'Info',
+    icon: IconAperture,
+    href: '/Info',
+    chip: 'New',
+    chipColor: 'secondary',
   }
 ];
 

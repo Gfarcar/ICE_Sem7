@@ -42,8 +42,7 @@
               "RelativeToolTip": "EzFitAPI\\Models\\IngedientesComida.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-14T18:33:34.762Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-14T18:33:34.762Z"
             },
             {
               "$type": "Document",
@@ -55,8 +54,7 @@
               "RelativeToolTip": "EzFitAPI\\Controllers\\ComidaController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-14T18:04:22.802Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-14T18:04:22.802Z"
             },
             {
               "$type": "Document",
@@ -68,8 +66,7 @@
               "RelativeToolTip": "EzFitAPI\\Program.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAAAAACsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-14T17:58:33.588Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-14T17:58:33.588Z"
             },
             {
               "$type": "Document",
@@ -81,8 +78,7 @@
               "RelativeToolTip": "EzFitAPI\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-11-14T17:54:24.197Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-14T17:54:24.197Z"
             },
             {
               "$type": "Document",
@@ -92,7 +88,7 @@
               "RelativeDocumentMoniker": "EzFitAPI\\Models\\EzFitContext.cs",
               "ToolTip": "C:\\Users\\gfarias\\Documents\\GitHub\\ICE_Sem7\\EzFitAPI\\EzFitAPI\\Models\\EzFitContext.cs",
               "RelativeToolTip": "EzFitAPI\\Models\\EzFitContext.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAA9wCIAAAA/AAAAAAAAAA==",
+              "ViewState": "AgIAABIAAAAAAAAAAAAowB4AAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-14T17:52:22.678Z",
               "EditorCaption": ""

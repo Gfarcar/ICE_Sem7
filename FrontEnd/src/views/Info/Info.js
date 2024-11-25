@@ -1,7 +1,8 @@
 import React from 'react';
+import { useFormik } from 'formik';
 import { Box, Grid } from '@mui/material';
-import GridEmpleados from '../../components/sample/gridEmpleados';
-import { StoreProvider } from '../../components/sample/storeContext';
+import GridEmpleados from '../../components/sample/HorasTrabajadas/gridHorasTrabajadas';
+import InfoForm  from '../../components/forms/theme-elements/InfoForm';
 const BCrumb = [
   {
     to: '/',
@@ -12,21 +13,19 @@ const BCrumb = [
   },
 ];
 
-const SamplePage = () => {
+const Info = () => {
   return (
-    <StoreProvider>
+   
     
                     <Box>
                       <Grid container spacing={3}>
                         <Grid item xs={12} lg={15}>
-                          <GridEmpleados />
+                          <InfoForm />
                         </Grid>
                         
                         </Grid>
                     </Box>
-              
-    </StoreProvider>
   );
 };
 
-export default SamplePage;
+export default Info;

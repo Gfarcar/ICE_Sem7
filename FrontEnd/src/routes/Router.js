@@ -10,6 +10,7 @@ import GuestGuard from 'src/guards/authGuard/GuestGaurd';
 
 /* ****Pages***** */
 const SamplePage = Loadable(lazy(() => import('../views/sample-page/SamplePage')));
+const Info = Loadable(lazy(() => import('../views/Info/Info')));
 
 
 
@@ -32,6 +33,7 @@ const Router = [
     children: [
       { path: '/', element: <Navigate to="/sample-page" /> },
       { path: '/sample-page', exact: true, element: <SamplePage /> },
+      { path: '/Info', exact: true, element: <Info /> },
 
 
       
