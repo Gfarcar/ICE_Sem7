@@ -47,7 +47,6 @@ export const AuthProvider = ({ children }) => {
         if (roleDoc.exists()) {
           userRole = roleDoc.data(); // Contains role information (e.g., { Admin: true })
           isAdmin = userRole.Admin;
-          console.log(isAdmin)
         }
 
 

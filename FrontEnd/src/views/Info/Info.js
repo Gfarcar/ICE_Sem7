@@ -3,6 +3,7 @@ import { useFormik } from 'formik';
 import { Box, Grid } from '@mui/material';
 import GridEmpleados from '../../components/sample/HorasTrabajadas/gridHorasTrabajadas';
 import InfoForm  from '../../components/forms/theme-elements/InfoForm';
+import InfoDisplay  from '../../components/sample/InfoDisplay/InfoDisplay';
 const BCrumb = [
   {
     to: '/',
@@ -20,10 +21,16 @@ const Info = () => {
                     <Box>
                       <Grid container spacing={3}>
                         <Grid item xs={12} lg={15}>
-                          <InfoForm />
+                          <Grid item>
+                            <InfoDisplay />
+                          </Grid>
+                          <Grid>
+                            <InfoForm />
+                          </Grid>
                         </Grid>
                         
-                        </Grid>
+                        
+                      </Grid>
                     </Box>
   );
 };
