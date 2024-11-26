@@ -20,15 +20,15 @@ const Info = () => {
     
                     <Box>
                       <Grid container spacing={3}>
-                        <Grid item xs={12} lg={15}>
-                          <Grid item>
-                            <InfoDisplay />
-                          </Grid>
-                          <Grid>
-                            <InfoForm />
-                          </Grid>
+                        <Grid item sm={10} lg={6}>
+                          <InfoDisplay />
                         </Grid>
-                        
+                        {/* column */}
+                        <Grid item xs={10} lg={6}>
+                          <InfoForm />
+                        </Grid>
+
+
                         
                       </Grid>
                     </Box>
