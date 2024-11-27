@@ -17,11 +17,17 @@ const Menuitems = [
   },
 
   {
+    id: 15118,
+    title: 'HomePage',
+    icon: IconAperture,
+    href: '/HomePage',
+    chipColor: 'secondary',
+  },
+  {
     id: 15116,
     title: 'Productos',
     icon: IconAperture,
-    href: '/sample-page',
-    chip: 'New',
+    href: '/Alimentos',
     chipColor: 'secondary',
   },
   {
@@ -29,9 +35,9 @@ const Menuitems = [
     title: 'Info',
     icon: IconAperture,
     href: '/Info',
-    chip: 'New',
     chipColor: 'secondary',
-  }
+  },
+  
 ];
 
 export default Menuitems;

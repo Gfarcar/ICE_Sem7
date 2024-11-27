@@ -95,7 +95,6 @@ function AuthProvider({ children }) {
           );
           const { user, roles, claims } = response.data;
           reduxDispatch(setRole(roles[0]));
-          console.log(roles);
           window.localStorage.setItem('role', roles);
 
           dispatch({

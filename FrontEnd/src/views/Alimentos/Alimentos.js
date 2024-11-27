@@ -13,7 +13,7 @@ const BCrumb = [
   },
 ];
 
-const SamplePage = () => {
+const Alimentos = () => {
   return (
     <HorasTrabajadasProvider>
     
@@ -30,4 +30,4 @@ const SamplePage = () => {
   );
 };
 
-export default SamplePage;
+export default Alimentos;

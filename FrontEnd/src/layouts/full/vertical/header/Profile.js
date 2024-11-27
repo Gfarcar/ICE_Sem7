@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import {
   Box,
@@ -8,39 +8,66 @@ import {
   Divider,
   Button,
   IconButton,
+  CircularProgress
 } from '@mui/material';
 import * as dropdownData from './data';
-import { useDispatch } from 'react-redux';
 
 import { IconMail } from '@tabler/icons';
 import { Stack } from '@mui/system';
-
 import ProfileImg from 'src/assets/images/profile/user-1.jpg';
-import unlimitedImg from 'src/assets/images/backgrounds/unlimited-bg.png';
 import useAuth from 'src/guards/authGuard/UseAuth';
 import useMounted from 'src/guards/authGuard/UseMounted';
+import { doc, getDoc, onSnapshot } from 'firebase/firestore';
+import { Db } from '../../../../guards/firebase/Firebase';
+import AuthContext from '/src/guards/firebase/firebaseContext';
 
-//import { logout } from '../../../../guards/jwt/JwtContext';
-import { clearRole } from 'src/store/customizer/CustomizerSlice'; // Importa la acción para limpiar el rol
+import DashboardCard from 'src/components/shared/DashboardCard';
+
 
 const Profile = () => {
 //  const dispatch = useDispatch(); // Inicializa useDispatch
   const { logout } = useAuth();
   const navigate = useNavigate(); // Inicializa useNavigate
-const mounted = useMounted();
+  const mounted = useMounted();
   const [anchorEl2, setAnchorEl2] = useState(null);
+  const { user } = useContext(AuthContext);
+  const [userInfo, setUserInfo] = useState(null);
+  const [loading, setLoading] = useState(true);
+
   const handleClick2 = (event) => {
     setAnchorEl2(event.currentTarget);
   };
   const handleClose2 = () => {
     setAnchorEl2(null);
   };
-/*
-  const handleLogout = async () => {
-    await logout(dispatch); 
-    navigate('/auth/login'); 
-  };
-*/
+
+  useEffect(() => {
+    if (!user) return;
+
+    const userDocRef = doc(Db, 'info', user.id);
+
+    // Real-time listener for document changes
+    const unsubscribe = onSnapshot(userDocRef, (docSnap) => {
+      if (docSnap.exists()) {
+        setUserInfo(docSnap.data());
+      } else {
+        setUserInfo(null);
+      }
+      setLoading(false);
+    });
+
+    // Cleanup the listener
+    return () => unsubscribe();
+  }, [user]);
+
+  if (loading) {
+    return (
+      <Box textAlign="center" mt={4}>
+        <CircularProgress />
+      </Box>
+    );
+  }
+
 
 const handleLogout = async () => {
   try {
@@ -101,10 +128,10 @@ const handleLogout = async () => {
           <Avatar src={ProfileImg} alt={ProfileImg} sx={{ width: 95, height: 95 }} />
           <Box>
             <Typography variant="subtitle2" color="textPrimary" fontWeight={600}>
-              Mathew Anderson
+              {userInfo.name}
             </Typography>
             <Typography variant="subtitle2" color="textSecondary">
-              Designer
+              User
             </Typography>
             <Typography
               variant="subtitle2"
@@ -114,78 +141,12 @@ const handleLogout = async () => {
               gap={1}
             >
               <IconMail width={15} height={15} />
-              info@modernize.com
+              {user.email}
             </Typography>
           </Box>
         </Stack>
         <Divider />
-        {dropdownData.profile.map((profile) => (
-          <Box key={profile.title}>
-            <Box sx={{ py: 2, px: 0 }} className="hover-text-primary">
-              <Link to={profile.href}>
-                <Stack direction="row" spacing={2}>
-                  <Box
-                    width="45px"
-                    height="45px"
-                    bgcolor="primary.light"
-                    display="flex"
-                    alignItems="center"
-                    justifyContent="center"
-                  >
-                    <Avatar
-                      src={profile.icon}
-                      alt={profile.icon}
-                      sx={{
-                        width: 24,
-                        height: 24,
-                        borderRadius: 0,
-                      }}
-                    />
-                  </Box>
-                  <Box>
-                    <Typography
-                      variant="subtitle2"
-                      fontWeight={600}
-                      color="textPrimary"
-                      className="text-hover"
-                      noWrap
-                      sx={{
-                        width: '240px',
-                      }}
-                    >
-                      {profile.title}
-                    </Typography>
-                    <Typography
-                      color="textSecondary"
-                      variant="subtitle2"
-                      sx={{
-                        width: '240px',
-                      }}
-                      noWrap
-                    >
-                      {profile.subtitle}
-                    </Typography>
-                  </Box>
-                </Stack>
-              </Link>
-            </Box>
-          </Box>
-        ))}
         <Box mt={2}>
-          <Box bgcolor="primary.light" p={3} mb={3} overflow="hidden" position="relative">
-            <Box display="flex" justifyContent="space-between">
-              <Box>
-                <Typography variant="h5" mb={2}>
-                  Unlimited <br />
-                  Access
-                </Typography>
-                <Button variant="contained" color="primary">
-                  Upgrade
-                </Button>
-              </Box>
-              <img src={unlimitedImg} alt="unlimited" className="signup-bg"></img>
-            </Box>
-          </Box>
           <Button onClick={handleLogout} variant="outlined" color="primary" fullWidth>
             Logout
           </Button>

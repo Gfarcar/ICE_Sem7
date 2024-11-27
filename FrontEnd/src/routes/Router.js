@@ -9,8 +9,9 @@ import AuthGuard from 'src/guards/authGuard/AuthGuard';
 import GuestGuard from 'src/guards/authGuard/GuestGaurd';
 
 /* ****Pages***** */
-const SamplePage = Loadable(lazy(() => import('../views/sample-page/SamplePage')));
+const Alimentos = Loadable(lazy(() => import('../views/Alimentos/Alimentos')));
 const Info = Loadable(lazy(() => import('../views/Info/Info')));
+const HomePage = Loadable(lazy(() => import('../views/HomePage/HomePage')));
 
 
 
@@ -31,9 +32,10 @@ const Router = [
       </AuthGuard>
     ),
     children: [
-      { path: '/', element: <Navigate to="/sample-page" /> },
-      { path: '/sample-page', exact: true, element: <SamplePage /> },
+      { path: '/', element: <Navigate to="/HomePage" /> },
+      { path: '/Alimentos', exact: true, element: <Alimentos /> },
       { path: '/Info', exact: true, element: <Info /> },
+      { path: '/HomePage', exact: true, element: <HomePage /> },
 
 
       

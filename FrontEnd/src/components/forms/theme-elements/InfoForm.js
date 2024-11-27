@@ -13,6 +13,8 @@ const SignupForm = () => {
     initialValues: {
       weight: '',
       height: '',
+      name: '',
+      lastname: ''
     },
     onSubmit: async (values) => {
 
@@ -28,6 +30,8 @@ const SignupForm = () => {
           weight: values.weight,
           height: values.height,
           IMC: IMC,
+          name: values.name,
+          lastName: values.lastname,
         };
 
         if (roleDoc.exists()) {
@@ -51,6 +55,28 @@ const SignupForm = () => {
           Update User Information
         </Typography>
         <Grid container spacing={2}>
+        <Grid item xs={12} sm={6}>
+            <TextField
+              fullWidth
+              id="name"
+              name="name"
+              label="Name"
+              variant="outlined"
+              value={formik.values.name}
+              onChange={formik.handleChange}
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              fullWidth
+              id="lastname"
+              name="lastname"
+              label="Lastname"
+              variant="outlined"
+              value={formik.values.lastname}
+              onChange={formik.handleChange}
+            />
+          </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
               fullWidth

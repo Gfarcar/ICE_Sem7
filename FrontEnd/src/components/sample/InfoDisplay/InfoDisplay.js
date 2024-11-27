@@ -42,9 +42,12 @@ const UserInfo = () => {
       {userInfo ? (
         <Box>
           <Typography variant="h6">Current User Information:</Typography>
+          <Typography>Name : {userInfo.name}</Typography>
+          <Typography>Last Name: {userInfo.lastName}</Typography>
           <Typography>Weight: {userInfo.weight}</Typography>
           <Typography>Height: {userInfo.height}</Typography>
           <Typography>BMI (IMC): {userInfo.IMC}</Typography>
+          
         </Box>
       ) : (
         <Typography variant="h6" color="textSecondary">

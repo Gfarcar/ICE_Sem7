@@ -1,7 +1,7 @@
 import { Box, Container, Typography, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 import ErrorImg from 'src/assets/images/backgrounds/errorimg.svg';
-import SamplePage from '../sample-page/SamplePage';
+import HomePage from '../HomePage/HomePage';
 const Error = () => (
   <Box
     display="flex"
@@ -22,7 +22,7 @@ const Error = () => (
         color="primary"
         variant="contained"
         component={Link}
-        to="/sample-page"
+        to="/HomePage"
         disableElevation
       >
         Go Back to Home
