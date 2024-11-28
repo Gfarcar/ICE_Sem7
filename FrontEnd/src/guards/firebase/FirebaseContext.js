@@ -43,10 +43,8 @@ export const AuthProvider = ({ children }) => {
         const roleDoc = await getDoc(roleDocRef);
 
         let userRole = null;
-        let isAdmin = false;
         if (roleDoc.exists()) {
           userRole = roleDoc.data(); // Contains role information (e.g., { Admin: true })
-          isAdmin = userRole.Admin;
         }
 
 
@@ -58,7 +56,6 @@ export const AuthProvider = ({ children }) => {
               id: user.uid,
               avatar: user.photoURL,
               email: user.email,
-              isAdmin: userRole.Admin
                 
             },
           },

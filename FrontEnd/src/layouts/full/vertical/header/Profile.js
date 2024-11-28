@@ -128,7 +128,7 @@ const handleLogout = async () => {
           <Avatar src={ProfileImg} alt={ProfileImg} sx={{ width: 95, height: 95 }} />
           <Box>
             <Typography variant="subtitle2" color="textPrimary" fontWeight={600}>
-              {userInfo.name}
+              {userInfo?.name ?? 'Not Assigned' }
             </Typography>
             <Typography variant="subtitle2" color="textSecondary">
               User

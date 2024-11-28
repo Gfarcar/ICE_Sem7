@@ -13,16 +13,10 @@ import AuthContext from '/src/guards/firebase/firebaseContext';
 
 
 const SidebarItems = () => {
-  const { user } = useContext(AuthContext);
-  var role = null;
 
-  if(user.isAdmin){
-     role = 1;
-  } else {
+  var role = 1;
 
-    role = 2;
-  }
- 
+
   useEffect(() => {
     console.log("Role changed:", role); // Verifica si el rol cambia
   }, [role]);

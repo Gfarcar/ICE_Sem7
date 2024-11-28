@@ -1,14 +1,14 @@
-import React, {useContext} from 'react';
+import React, { useState, useContext } from 'react';
 import { useFormik } from 'formik';
-import { TextField, Button, Box, Typography, Grid } from '@mui/material';
+import { TextField, Button, Box, Typography, Grid, Alert } from '@mui/material';
 import { doc, setDoc, getDoc } from "firebase/firestore";
 import { Db } from '../../../guards/firebase/Firebase';
 import AuthContext from '/src/guards/firebase/firebaseContext';
 import DashboardCard from 'src/components/shared/DashboardCard';
 
 const SignupForm = () => {
-
   const { user } = useContext(AuthContext);
+  const [successMessage, setSuccessMessage] = useState(''); // State for success message
   const formik = useFormik({
     initialValues: {
       weight: '',
@@ -17,45 +17,51 @@ const SignupForm = () => {
       lastname: ''
     },
     onSubmit: async (values) => {
+      const roleDocRef = doc(Db, 'info', user.id);
+      const roleDoc = await getDoc(roleDocRef);
 
-        const roleDocRef = doc(Db, 'info', user.id);
-        const roleDoc = await getDoc(roleDocRef);
-    
+      const heightInMeters = parseFloat(values.height) / 100; // Assuming height is in cm
+      const IMC = (parseFloat(values.weight) / (heightInMeters * heightInMeters)).toFixed(2);
 
-        // Calculate IMC (BMI) = weight(kg) / (height(m)^2)
-        const heightInMeters = parseFloat(values.height) / 100; // Assuming height is in cm
-        const IMC = (parseFloat(values.weight) / (heightInMeters * heightInMeters)).toFixed(2);
+      const data = {
+        weight: values.weight,
+        height: values.height,
+        IMC: IMC,
+        name: values.name,
+        lastName: values.lastname,
+      };
 
-        const data = {
-          weight: values.weight,
-          height: values.height,
-          IMC: IMC,
-          name: values.name,
-          lastName: values.lastname,
-        };
-
+      try {
         if (roleDoc.exists()) {
-          // Update existing document
           await setDoc(roleDocRef, data, { merge: true });
-          alert('Info updated successfully!');
+          setSuccessMessage('Info updated successfully!');
         } else {
-          // Create new document
           await setDoc(roleDocRef, data);
-          alert('Info created successfully!');
+          setSuccessMessage('Info created successfully!');
         }
-
+        setTimeout(() => setSuccessMessage(''), 3000); // Hide after 3 seconds
+      } catch (error) {
+        console.error('Error updating info:', error);
+      }
     },
   });
 
-
   return (
+    <box>{successMessage && ( // Show success message if it exists
+      <Box mt={3}>
+        <Alert severity="success" variant="filled">
+          {successMessage}
+        </Alert>
+      </Box>
+    )}
     <DashboardCard title="Update Info">
+      
       <form onSubmit={formik.handleSubmit}>
         <Typography variant="h6" gutterBottom>
           Update User Information
         </Typography>
         <Grid container spacing={2}>
-        <Grid item xs={12} sm={6}>
+          <Grid item xs={12} sm={6}>
             <TextField
               fullWidth
               id="name"
@@ -112,8 +118,10 @@ const SignupForm = () => {
             </Box>
           </Grid>
         </Grid>
+        
       </form>
     </DashboardCard>
+    </box>
   );
 };
 

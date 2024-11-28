@@ -80,7 +80,7 @@ export const Profile = () => {
           <Avatar alt="Remy Sharp" src={img1} />
 
           <Box>
-            <Typography variant="h6"  color="textPrimary">{userInfo.name}</Typography>
+            <Typography variant="h6"  color="textPrimary">{userInfo?.name ?? 'Not Assigned' }</Typography>
             <Typography variant="caption" color="textSecondary">User</Typography>
           </Box>
           <Box sx={{ ml: 'auto' }}>
